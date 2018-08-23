@@ -14,9 +14,6 @@
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
 
-    <!-- Magnificpopup Css -->
-    <link rel="stylesheet" type="text/css" href="css/magnific-popup.css">
-
     <!-- materialdesign icons CSS -->
     <link href="css/materialdesignicons.min.css" rel="stylesheet">
 
@@ -31,7 +28,7 @@
     <!-- Custom  Css -->
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <link href="css/colors/default.css" rel="stylesheet">
-    
+        
 </head>
 
     <body>
@@ -76,7 +73,7 @@
                     </ul>
                     <div>
                         <div class="text-right pl-5 mb-0 nav-button">
-                            <a href="#" class="nav-btn btn btn-outline-white btn-rounded">Get Started</a>
+                            <a href="#" class="nav-btn btn btn-outline-white btn-rounded ">Get Started</a>
                         </div>
                     </div>
                 </div>
@@ -84,23 +81,23 @@
         </nav>
 
         <!-- START HOME -->
-        <section class="section bg-home-parallax bg-home-full" style="background-image: url('images/bg-parallax.jpg');" id="home">
-            <!-- <div class="bg-overlay"></div> -->
+        <section class="section bg-gradiant bg-home-full" id="home">
+            <!-- <div class="bg-gradiant-overlay"></div> -->
             <div class="home-center">
                 <div class="home-desc-center">
-                    <div class="container home-up">
-                        <div class="row justify-content-center">
+                    <div class="container">
+                        <div class="row vertical-content">
                             <div class="col-lg-12">
-                                <div class="home-content text-center home-parallax">
-                                    <h6 class="home-title">We love make things amazing and simple.</h6>
-                                    <p class="home-subtitle mt-4 mx-auto">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam inventore.</p>
+                                <div class="home-content text-center">
+                                    <h1 class="home-title ml3">We love make things amazing and simple</h1>
+                                    <p class="home-subtitle mt-4 mx-auto">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
 
-                                    <div class="btn-contant">
-
-                                        <a href="https://www.youtube.com/watch?v=0Xr8uAZvqlc" class="video-play-icon btn btn-custom btn-rounded mt-4 mr-3 "><i class="mdi mdi-play"></i> Watch Video</a>
+                                    <div class="mt-5">
+                                        <a href="#" class="btn btn-outline-white btn-rounded">Learn More</a>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -732,7 +729,7 @@
 
         <!-- Back to top -->    
         <a href="#" class="back-to-top" id="back-to-top"> <i class="mdi mdi-chevron-up"> </i> </a>
-       
+
         <!-- JAVASCRIPTS -->
         <script src="js/jquery.min.js"></script>
         <script src="js/popper.min.js"></script>
@@ -741,23 +738,34 @@
         <!-- Scroolspy JS -->
         <script src="js/scrollspy.min.js"></script>
         <script src="js/owl.carousel.min.js"></script>
-        <script src="js/jquery.magnific-popup.min.js"></script>
-        <!-- particles js  -->
-        <script src="js/particles.js"></script>
-        <script src="js/particles.app.js"></script>
+        <script src="js/anime.min.js"></script>
 
         <!-- Custom JS -->
         <script src="js/app.js"></script>
 
         <script>
-            $('.video-play-icon').magnificPopup({
-                disableOn: 700,
-                type: 'iframe',
-                mainClass: 'mfp-fade',
-                removalDelay: 160,
-                preloader: false,
-                fixedContentPos: false
+            $('.ml3').each(function() {
+                $(this).html($(this).text().replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>"));
             });
+
+            anime.timeline({
+                    loop: true
+                })
+                .add({
+                    targets: '.ml3 .letter',
+                    opacity: [0, 1],
+                    easing: "easeInOutQuad",
+                    duration: 2250,
+                    delay: function(el, i) {
+                        return 150 * (i + 1)
+                    }
+                }).add({
+                    targets: '.ml3',
+                    opacity: 0,
+                    duration: 1000,
+                    easing: "easeOutExpo",
+                    delay: 1000
+                });
         </script>
 
     </body>
